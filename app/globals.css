@@ -1,26 +1,261 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+  --ground:#211f1a; --ground-2:#2a2822; --paper:#f3ecd9; --paper-2:#ece2ca;
+  --ink:#221f1a; --ink-soft:#4a4436; --red:#7a1f1c; --red-bright:#a8352f;
+  --gold:#c8a24a; --olive:#6b6d4f; --line:rgba(34,31,26,.16);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Spectral",Georgia,serif; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column; min-height:100vh;
+}
+a{color:inherit}
+img{display:block; max-width:100%}
+main{flex:1}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px clamp(20px,5vw,56px);
+  background:#1a1814; color:var(--paper); border-bottom:2px solid var(--red);
+}
+.nav .brand{
+  font-family:"Oswald",sans-serif; font-weight:600; letter-spacing:.05em;
+  font-size:1.3rem; color:var(--paper); text-decoration:none; text-transform:uppercase;
+}
+.nav-links{display:flex; align-items:center; gap:clamp(14px,2.5vw,30px); flex-wrap:wrap}
+.nav-links a{
+  font-family:"Oswald",sans-serif; font-weight:300; letter-spacing:.05em;
+  font-size:.96rem; color:#d8ceb6; text-decoration:none; text-transform:uppercase;
+}
+.nav-links a:hover{color:#fff}
+.nav-links a.buy{background:var(--red); color:#fff; padding:9px 20px; border-radius:2px; font-weight:500; letter-spacing:.06em}
+.nav-links a.buy:hover{background:var(--red-bright); color:#fff}
+.hero{
+  position:relative; overflow:hidden;
+  background:
+    radial-gradient(120% 100% at 78% 30%, rgba(168,53,47,.20), transparent 55%),
+    linear-gradient(180deg,#26241d 0%, #1c1a15 100%);
+  color:var(--paper); border-bottom:3px solid var(--red);
+  display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(30px,5vw,70px);
+  align-items:center; padding:clamp(46px,7vw,104px) clamp(22px,5vw,64px);
+}
+.hero-words{max-width:36rem}
+.hero-words .flag{
+  font-family:"Oswald",sans-serif; font-weight:500; letter-spacing:.24em;
+  text-transform:uppercase; font-size:.72rem; color:var(--gold); margin:0 0 20px;
+}
+.hero-words h1{
+  font-family:"Spectral",serif; font-weight:600; font-size:clamp(2rem,4.7vw,3.4rem);
+  line-height:1.12; margin:0 0 22px; color:#f7f1e1;
+}
+.hero-words .lede{font-size:1.14rem; color:#cdc3ab; margin:0 0 30px; max-width:42ch}
+.hero-actions{display:flex; gap:20px; align-items:center; flex-wrap:wrap}
+.btn{
+  font-family:"Oswald",sans-serif; font-weight:500; letter-spacing:.05em; text-transform:uppercase;
+  font-size:.95rem; text-decoration:none; padding:13px 30px; border-radius:2px; display:inline-block;
+}
+.btn-red{background:var(--red); color:#fff}
+.btn-red:hover{background:var(--red-bright)}
+.btn-ghost{color:#f2ead6; border-bottom:1px solid var(--red-bright); padding:13px 2px; border-radius:0}
+.btn-ghost:hover{color:#fff; border-color:var(--gold)}
+.hero-tag{
+  margin:26px 0 0; font-family:"Oswald",sans-serif; letter-spacing:.14em; text-transform:uppercase;
+  font-size:.76rem; color:var(--red-bright);
+}
+.hero-tag .star{color:var(--gold)}
+.hero-cover{justify-self:center; width:100%; max-width:330px}
+.hero-cover img{
+  width:100%; border-radius:2px;
+  box-shadow:0 34px 74px rgba(0,0,0,.62), 0 0 0 1px rgba(0,0,0,.4);
+}
+.wrap{max-width:1080px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(20px,5vw,48px)}
+.page-wrap{max-width:760px}
+.section{border-top:1px solid var(--line); padding:clamp(28px,4vw,50px) 0}
+.section:first-child{border-top:none}
+.section h2{
+  font-family:"Oswald",sans-serif; font-weight:300; font-size:clamp(1.4rem,3vw,2rem);
+  color:var(--ink); margin:0 0 8px;
+}
+.muted{color:var(--ink-soft); margin:0; max-width:60ch}
+.page-title{
+  font-family:"Oswald",sans-serif; font-weight:300; font-size:clamp(2rem,5vw,3rem);
+  color:var(--ink); margin:0 0 8px; line-height:1.05;
+}
+.page-lede{font-size:1.12rem; color:var(--ink-soft); margin:0 0 26px; max-width:54ch}
+.placeholder{
+  border:1px dashed var(--line); border-radius:3px; padding:26px; color:var(--ink-soft);
+  background:rgba(34,31,26,.02); font-style:italic; max-width:60ch;
+}
+.footer{
+  background:#1a1814; color:#cfc6ad; border-top:2px solid var(--red);
+  padding:clamp(28px,4vw,44px) clamp(20px,5vw,48px); margin-top:auto;
+}
+.footer .f-title{font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.04em; color:var(--paper); font-size:1.1rem; margin:0 0 6px}
+.footer p{margin:0 0 4px}
+.footer a{color:#d8ceb6}
+.footer .f-small{font-size:.85rem; color:#9a917c; margin-top:10px}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr; padding-top:38px; text-align:left}
+  .hero-cover{order:2; max-width:230px; justify-self:start}
+  .nav{flex-direction:column; gap:12px; align-items:flex-start}
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ---- book page ---- */
+.book-top{
+  display:grid; grid-template-columns:300px 1fr; gap:clamp(28px,5vw,60px);
+  max-width:1080px; margin:0 auto; padding:clamp(36px,5vw,64px) clamp(20px,5vw,48px);
+  align-items:start;
+}
+.book-cover img{width:100%; border-radius:2px; box-shadow:0 26px 60px rgba(0,0,0,.34)}
+.book-title{font-family:"Oswald",sans-serif; font-weight:600; font-size:clamp(2.2rem,5vw,3.2rem); color:var(--ink); margin:0; line-height:1; letter-spacing:.01em}
+.book-sub{font-family:"Oswald",sans-serif; font-weight:300; text-transform:uppercase; letter-spacing:.06em; color:var(--olive); font-size:clamp(.95rem,2vw,1.15rem); margin:8px 0 2px}
+.book-byline{font-style:italic; color:var(--ink-soft); margin:0 0 20px}
+.pullquote{margin:0 0 24px; padding:12px 0 12px 20px; border-left:3px solid var(--red); font-family:"Spectral",serif; font-style:italic; font-size:1.12rem; color:#3a352b}
+.pullquote cite{display:block; font-style:normal; font-size:.85rem; color:var(--ink-soft); margin-top:8px; letter-spacing:.02em}
+.book-actions{display:flex; gap:20px; flex-wrap:wrap; align-items:center}
+.btn-line{color:var(--red); border-bottom:1px solid var(--red); padding:13px 2px; border-radius:0; font-family:"Oswald",sans-serif; font-weight:500; letter-spacing:.05em; text-transform:uppercase; font-size:.95rem; text-decoration:none; display:inline-block}
+.btn-line:hover{color:var(--red-bright); border-color:var(--red-bright)}
+.desc p{font-size:1.1rem; margin:0 0 16px; color:#2f2b22}
+.buy{background:#ece1c6; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:24px}
+.buy-head{font-family:"Oswald",sans-serif; font-weight:300; font-size:clamp(1.6rem,3.4vw,2.3rem); color:var(--ink); margin:0 0 6px}
+.buy-note{color:var(--ink-soft); margin:0 0 26px; max-width:62ch}
+.formats{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:22px}
+.format{background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:20px 22px}
+.format h3{font-family:"Oswald",sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:.08em; font-size:.92rem; color:var(--red); margin:0 0 12px; padding-bottom:8px; border-bottom:1px solid var(--line)}
+.format a{display:block; color:var(--ink); text-decoration:none; padding:7px 0; font-size:1.02rem; border-bottom:1px solid rgba(34,31,26,.07)}
+.format a:last-child{border-bottom:none}
+.format a:hover{color:var(--red)}
+.signed{margin:28px 0 0; font-size:1.05rem; color:#2f2b22}
+.signed a{color:var(--red)}
+@media (max-width:720px){
+  .book-top{grid-template-columns:1fr; justify-items:start}
+  .book-cover{max-width:220px}
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---- reviews page ---- */
+.reviews-intro{max-width:1080px; margin:0 auto; padding:clamp(36px,5vw,60px) clamp(20px,5vw,48px) clamp(8px,2vw,16px)}
+.reviews-intro .page-title{margin-bottom:10px}
+.stars-line{font-family:"Oswald",sans-serif; letter-spacing:.1em; text-transform:uppercase; font-size:.82rem; color:var(--olive); margin:0 0 4px}
+.stars-line .stars{color:var(--red-bright); letter-spacing:.15em; margin-right:8px}
+.featured{max-width:1080px; margin:0 auto; padding:clamp(8px,2vw,20px) clamp(20px,5vw,48px)}
+.feat-review{border-left:3px solid var(--red); padding:6px 0 6px 24px; margin:0 0 34px}
+.feat-quote{font-family:"Spectral",serif; font-size:clamp(1.25rem,2.6vw,1.6rem); line-height:1.4; color:#2d2820; margin:0 0 14px; font-weight:500}
+.feat-body{font-size:1.03rem; color:#443f34; margin:0 0 14px; max-width:64ch}
+.feat-attr{font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.05em; font-size:.86rem; color:var(--ink)}
+.feat-attr .cred{display:block; text-transform:none; letter-spacing:0; font-family:"Spectral",serif; font-style:italic; font-size:.92rem; color:var(--ink-soft); margin-top:3px}
+.reviews-grid-wrap{background:#ece1c6; border-top:1px solid var(--line); margin-top:16px}
+.reviews-grid{max-width:1080px; margin:0 auto; padding:clamp(30px,4vw,52px) clamp(20px,5vw,48px);
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:22px}
+.rev-card{background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:22px 24px}
+.rev-stars{color:var(--red-bright); letter-spacing:.12em; font-size:.85rem; margin:0 0 8px}
+.rev-title{font-family:"Oswald",sans-serif; font-weight:500; font-size:1.08rem; color:var(--ink); margin:0 0 8px; line-height:1.2}
+.rev-text{font-size:.98rem; color:#443f34; margin:0 0 14px}
+.rev-name{font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.05em; font-size:.8rem; color:var(--red)}
+.rev-date{font-family:"Spectral",serif; font-style:italic; color:var(--ink-soft); font-size:.82rem; margin-top:2px}
+.reviews-cta{max-width:1080px; margin:0 auto; padding:clamp(28px,4vw,44px) clamp(20px,5vw,48px); text-align:center}
+.reviews-cta a{color:var(--red)}
+@media (max-width:720px){ .feat-review{padding-left:16px} }
+
+.reviews-cta a.btn{color:#fff}
+
+/* ---- gallery page ---- */
+.gallery{
+  background:
+    radial-gradient(120% 90% at 82% 8%, rgba(168,53,47,.14), transparent 55%),
+    linear-gradient(180deg,#26241d 0%, #1c1a15 100%);
+  color:var(--paper);
+}
+.g-intro{max-width:1080px; margin:0 auto; padding:clamp(40px,6vw,80px) clamp(20px,5vw,48px) clamp(12px,2vw,20px)}
+.g-eyebrow{font-family:"Spectral",serif; font-style:italic; color:var(--gold); font-size:1rem; margin:0 0 10px}
+.g-title{font-family:"Oswald",sans-serif; font-weight:600; font-size:clamp(2rem,5vw,3.2rem); color:#f7f1e1; margin:0 0 14px; line-height:1}
+.g-lede{font-size:1.12rem; color:#ded4bd; margin:0 0 8px; max-width:60ch}
+.g-note{font-family:"Oswald",sans-serif; letter-spacing:.02em; color:#b7ad93; font-size:.98rem; margin:0}
+.g-chapter{max-width:1180px; margin:0 auto; padding:clamp(24px,3.5vw,40px) clamp(20px,5vw,48px); border-top:1px solid rgba(230,220,195,.13)}
+.g-chapter-head{margin:0 0 clamp(16px,2.5vw,26px)}
+.g-ch-num{display:block; font-family:"Oswald",sans-serif; font-weight:500; letter-spacing:.18em; text-transform:uppercase; font-size:.74rem; color:var(--olive); margin-bottom:.35rem}
+.g-ch-mark{display:block; color:var(--red-bright); font-size:.9rem; letter-spacing:.4em; margin-bottom:.35rem}
+.g-ch-title{font-family:"Oswald",sans-serif; font-weight:300; font-size:clamp(1.4rem,3.2vw,2.1rem); margin:0; color:#f4eddb; line-height:1.05}
+.g-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:clamp(16px,2.2vw,28px); align-items:start}
+.g-tile{margin:0; cursor:pointer; outline:none}
+.g-mat{background:var(--paper); padding:10px; border-radius:2px; box-shadow:0 8px 22px rgba(0,0,0,.4); transition:transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s}
+.g-mat img{width:100%; height:auto; background:#ddd4bd; display:block}
+.g-tile:hover .g-mat, .g-tile:focus-visible .g-mat{transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,.5)}
+.g-tile:focus-visible .g-mat{outline:2px solid var(--red-bright); outline-offset:3px}
+.g-tile figcaption{color:#c7bda2; font-size:.86rem; line-height:1.45; margin-top:.6rem; font-style:italic}
+.g-cta{max-width:1080px; margin:0 auto; padding:clamp(30px,4vw,52px) clamp(20px,5vw,48px) clamp(44px,6vw,72px); text-align:center; border-top:1px solid rgba(230,220,195,.13)}
+.g-cta p{color:#ded4bd; max-width:52ch; margin:0 auto 20px}
+.g-lightbox{position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:clamp(16px,4vw,48px); background:rgba(18,18,15,.94); backdrop-filter:blur(3px)}
+.g-lb-figure{margin:0; max-width:1000px; display:flex; flex-direction:column; align-items:center}
+.g-lb-figure img{max-width:100%; max-height:70vh; width:auto; height:auto; background:var(--paper); padding:12px; border-radius:2px; box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.g-lb-meta{max-width:70ch; margin:16px auto 0; text-align:center; display:block}
+.g-lb-chapter{display:block; font-family:"Oswald",sans-serif; letter-spacing:.16em; text-transform:uppercase; font-size:.7rem; color:var(--olive); margin-bottom:.5rem}
+.g-lb-caption{display:block; color:#ece2cb; font-size:1.06rem; line-height:1.55; margin:0 0 .55rem}
+.g-lb-credit{display:block; color:#c7bda2; font-size:.82rem; font-style:italic}
+.g-lb-credit::before{content:"Credit: "; font-style:normal; color:var(--olive)}
+.g-lb-close{position:absolute; top:clamp(12px,3vw,24px); right:clamp(12px,3vw,24px); background:none; border:1px solid rgba(230,220,195,.3); color:var(--paper); border-radius:2px; width:44px; height:44px; font-size:1.4rem; cursor:pointer; line-height:1}
+.g-lb-close:hover{border-color:var(--red-bright); color:#fff}
+.g-lb-nav{position:absolute; top:50%; transform:translateY(-50%); background:none; border:none; color:#c7bda2; font-size:2.6rem; cursor:pointer; padding:.2em .4em; font-family:"Oswald",sans-serif; user-select:none}
+.g-lb-nav:hover{color:#fff}
+.g-lb-prev{left:clamp(4px,2vw,20px)} .g-lb-next{right:clamp(4px,2vw,20px)}
+.home-link{margin-top:14px}
+@media (max-width:640px){
+  .g-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px}
+  .g-lb-nav{font-size:1.9rem}
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---- about page ---- */
+.about-wrap{max-width:720px; margin:0 auto; padding:clamp(36px,5vw,64px) clamp(20px,5vw,48px)}
+.about-lead{font-family:"Spectral",serif; font-style:italic; font-size:clamp(1.3rem,2.8vw,1.75rem); line-height:1.35; color:var(--red); margin:0 0 28px}
+.about-body p{font-size:1.12rem; line-height:1.7; color:#2f2b22; margin:0 0 18px}
+.about-body p.pull{font-family:"Spectral",serif; font-style:italic; font-size:1.28rem; color:#3a352b; border-left:3px solid var(--red); padding:6px 0 6px 22px; margin:24px 0}
+.about-figure{margin:34px 0 10px}
+.about-figure img{width:100%; border-radius:2px; box-shadow:0 22px 50px rgba(0,0,0,.30)}
+.about-figure figcaption{font-family:"Spectral",serif; font-style:italic; color:var(--ink-soft); font-size:.95rem; text-align:center; margin-top:12px}
+.about-close{font-family:"Oswald",sans-serif; font-weight:300; font-size:clamp(1.3rem,2.6vw,1.7rem); color:var(--ink); line-height:1.3; margin:26px 0 0}
+
+/* ---- home: under-hero sections ---- */
+.home-h2{font-family:"Oswald",sans-serif; font-weight:300; font-size:clamp(1.5rem,3.2vw,2.2rem); color:var(--ink); margin:0 0 14px; line-height:1.12}
+.home-quote{background:#ece1c6; border-bottom:1px solid var(--line)}
+.home-quote-inner{max-width:820px; margin:0 auto; padding:clamp(40px,6vw,72px) clamp(20px,5vw,48px); text-align:center}
+.hq-stars{color:var(--red-bright); letter-spacing:.2em; font-size:.9rem; margin:0 0 16px}
+.hq-text{font-family:"Spectral",serif; font-style:italic; font-weight:500; font-size:clamp(1.4rem,3.2vw,2rem); line-height:1.4; color:#2d2820; margin:0 0 18px}
+.hq-attr{font-family:"Oswald",sans-serif; text-transform:uppercase; letter-spacing:.06em; font-size:.85rem; color:var(--ink-soft); margin:0 0 20px}
+.home-teaser-inner{max-width:820px; margin:0 auto; padding:clamp(44px,6vw,80px) clamp(20px,5vw,48px); text-align:center}
+.home-teaser-inner p{font-size:1.16rem; line-height:1.7; color:#2f2b22; max-width:60ch; margin:0 auto 26px}
+.home-teaser-actions{display:flex; gap:22px; justify-content:center; align-items:center; flex-wrap:wrap}
+.home-gallery{background:linear-gradient(180deg,#26241d 0%, #1c1a15 100%); border-top:3px solid var(--red); color:var(--paper)}
+.home-gallery-inner{max-width:1080px; margin:0 auto; padding:clamp(44px,6vw,76px) clamp(20px,5vw,48px); text-align:center}
+.home-gallery .home-h2{color:#f4eddb}
+.home-sub{color:#cdc3ab; font-size:1.08rem; max-width:56ch; margin:0 auto 30px}
+.home-peek{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(10px,1.6vw,18px); margin:0 0 30px}
+.home-peek .peek{display:block; background:var(--paper); padding:8px; border-radius:2px; box-shadow:0 10px 26px rgba(0,0,0,.4); transition:transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s}
+.home-peek .peek:hover{transform:translateY(-4px); box-shadow:0 16px 34px rgba(0,0,0,.55)}
+.home-peek .peek img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block; background:#ddd4bd}
+.home-gallery .btn-line{color:#f2ead6; border-color:var(--red-bright)}
+.home-gallery .btn-line:hover{color:#fff; border-color:var(--gold)}
+@media (max-width:640px){ .home-peek{grid-template-columns:repeat(2,1fr)} }
+
+/* ---- about beats + contact ---- */
+.about-beat{font-family:"Spectral",serif; font-weight:600; font-size:clamp(1.2rem,2.4vw,1.5rem); color:var(--ink); line-height:1.4; margin:26px 0}
+.about-body strong{font-weight:700; color:#241f18}
+.contact-wrap{max-width:620px; margin:0 auto; padding:clamp(48px,7vw,90px) clamp(20px,5vw,48px); text-align:center}
+.contact-wrap .page-title{margin-bottom:16px}
+.contact-intro{font-size:1.14rem; line-height:1.65; color:#2f2b22; margin:0 auto 30px; max-width:46ch}
+.contact-email{display:inline-block; font-family:"Oswald",sans-serif; font-weight:500; letter-spacing:.02em; font-size:clamp(1.15rem,3vw,1.6rem); color:#fff; background:var(--red); text-decoration:none; padding:15px 34px; border-radius:2px}
+.contact-email:hover{background:var(--red-bright)}
+.contact-note{color:var(--ink-soft); font-size:.98rem; margin:26px 0 0}
+
+/* ---- hero: lock text + cover together as a centered pair ---- */
+.hero{
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:clamp(26px,3vw,48px);
+  padding-left:clamp(22px,5vw,64px); padding-right:clamp(22px,5vw,64px);
+}
+.hero-words{flex:0 1 560px; max-width:560px}
+.hero-cover{flex:0 0 auto; width:clamp(300px,34vw,440px); max-width:100%}
+@media (max-width:760px){
+  .hero{justify-content:flex-start; gap:20px}
+  .hero-words{flex:1 1 100%}
+  .hero-cover{order:2; width:240px}
 }
