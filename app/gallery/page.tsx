@@ -153,7 +153,7 @@ const DATA: Item[] = [
     "id": "IMG-019",
     "caption": "Map of the fighting north of St. Vith, showing Am Stein, Born, Deidenberg, Hunningen, and the surrounding villages during Task Force Wilson's final operations in the Battle of the Bulge.",
     "credit": "7th Armored Division after-action report",
-    "alt": "Hand-drawn map of the area north of St. Vith showing Am Stein, Born, Deidenberg, Hunningen, and surrounding roads, with labels marking Task Force Wilson's January 22 assembly area at Hunningen and where a tank was hit by artillery near Born.",
+    "alt": "Map of the area north of St. Vith showing Am Stein, Born, Deidenberg, Hunningen, and surrounding roads, with labels marking Task Force Wilson's January 22 assembly area at Hunningen and where a tank was hit by artillery near Born.",
     "img": "/gallery/img-019.png",
     "chapter": "Chapter 13 · The Retaking of St. Vith"
   },
